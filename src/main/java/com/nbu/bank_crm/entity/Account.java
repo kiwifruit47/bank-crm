@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 public class Account extends BaseEntity {
     private final String IBAN;
     @Setter
-    private BigDecimal balance;
+    private BigDecimal balance = BigDecimal.ZERO;
     @Setter
     @Column(name = "is_active")
     private boolean isActive = true;
