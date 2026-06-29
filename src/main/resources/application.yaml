@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: bank-crm
+  datasource:
+    url: jdbc:postgresql://localhost:5433/bank-crm
+    username: postgres
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+server:
+  port: 8081
