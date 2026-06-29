@@ -32,4 +32,6 @@ public class Installment extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "loan_id")
     private final Loan loan;
+    @Column(name = "is_paid")
+    private boolean isPaid = false;
 }
