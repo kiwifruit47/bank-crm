@@ -4,9 +4,7 @@ import com.nbu.bank_crm.util.YearMonthConverter;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.YearMonth;
@@ -31,7 +29,10 @@ public class Installment extends BaseEntity {
     private final BigDecimal remainingAmount;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "loan_id")
-    private final Loan loan;
+    @Setter
+    private Loan loan;
     @Column(name = "is_paid")
+    @Getter
+    @Setter
     private boolean isPaid = false;
 }

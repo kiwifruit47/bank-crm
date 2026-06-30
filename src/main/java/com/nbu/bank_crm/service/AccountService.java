@@ -7,4 +7,6 @@ public interface AccountService {
     Account create(Account account, Client client);
     Account getById(long id);
     Account getByIBAN(String IBAN);
+    String generateIban();
+    Account closeAccount(long id);
 }

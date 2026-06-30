@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -39,5 +41,26 @@ public class AccountServiceImpl implements AccountService {
             throw new NotFoundException(Account.class, IBAN);
         }
         return optional.get();
+    }
+
+    @Override
+    public String generateIban() {
+        String IBAN;
+        do {
+            String numbers = new Random()
+                    .ints(20, 0, 10)
+                    .mapToObj(Integer::toString)
+                    .collect(Collectors.joining());
+            IBAN = "BG" + numbers;
+        } while (accountRepository.findByIBAN(IBAN).isPresent());
+        return IBAN;
+    }
+
+    @Transactional
+    @Override
+    public Account closeAccount(long id) {
+        Account account = getById(id);
+        account.setActive(false);
+        return accountRepository.save(account);
     }
 }

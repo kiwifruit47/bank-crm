@@ -2,9 +2,7 @@ package com.nbu.bank_crm.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Positive;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,8 +10,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "loans")
-@AllArgsConstructor
+@RequiredArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Getter
 public class Loan extends BaseEntity{
     @Positive
     private final BigDecimal amount;
