@@ -1,0 +1,10 @@
+package com.nbu.bank_crm.repository;
+
+import com.nbu.bank_crm.entity.Loan;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface LoanRepository  extends JpaRepository<Loan, Long> {
+    List<Loan> findAllByAccount_Id(long id);
+}
