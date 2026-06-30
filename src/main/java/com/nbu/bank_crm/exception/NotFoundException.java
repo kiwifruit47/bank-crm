@@ -5,8 +5,8 @@ public class NotFoundException extends RuntimeException {
         super(entityClass.getSimpleName() + " with id " + id + " not found");
     }
 
-    //for client concrete classes
-    //identifier is PIN or UIC
+    //for client concrete classes and account
+    //identifier is PIN or UIC or IBAN
     public NotFoundException(Class<?> entityClass, String identifier) {
         super(entityClass.getSimpleName() + " with identifier " + identifier + " not found");
     }
