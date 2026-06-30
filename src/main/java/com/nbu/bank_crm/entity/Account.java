@@ -1,17 +1,14 @@
 package com.nbu.bank_crm.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "accounts")
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class Account extends BaseEntity {
     private final String IBAN;
     @Setter
@@ -21,6 +18,7 @@ public class Account extends BaseEntity {
     private boolean isActive = true;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
+    @Setter
     private Client client;
 
 }
